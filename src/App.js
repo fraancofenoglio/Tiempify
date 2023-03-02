@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Instructions from "./components/Instructions";
+import ShowWeather from "./components/ShowWeather";
+import WeatherForm from "./components/WeatherForm";
+
 
 function App() {
+  const [weather, setWeather] = useState();
+  const [searching, setSearching] = useState(false);
+
+  const daynight = new Date().getHours()
+
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={daynight > 19 || daynight < 6 ? {backgroundColor: "#1B1B3A"}: {backgroundColor: "#6BBAEC"}}>
+      <h1 onClick={() => window.location.reload()} className="title">Tiempify</h1>
+      <WeatherForm setSearching={setSearching} setWeather={setWeather}></WeatherForm>
+      { weather ? <ShowWeather weather={weather}/> :( searching ? <div class="custom-loader"></div> : <Instructions/>)}
+
+
     </div>
   );
 }
