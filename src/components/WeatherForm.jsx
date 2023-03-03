@@ -4,7 +4,6 @@ import axios from "axios";
 const WeatherForm = ({setWeather, setSearching}) => {
 
     const Key = process.env.REACT_APP_API;
-    console.log(Key)
 
     const [city, setCity] = useState("");
     const [country, setCountry] = useState("");
@@ -20,11 +19,14 @@ const WeatherForm = ({setWeather, setSearching}) => {
         const response = await axios.get(url);
         setWeather(response.data)
         
-        console.log(response.data)
       } catch (error) {
-        console.log(error)
+        if (error.response.status === 404) {
+          
+        }
       } finally {
-        setSearching(false)
+        setSearching(false);
+        setCity("");
+        setCountry("");
       }
     }
 
