@@ -211,7 +211,7 @@ svg {
   }
 }
 
-@media only screen and (min-width: 760px){
+@media only screen and (min-width: 760px) {
   .city-input, .country-input, .search-button {
     width: 50%;
   }
