@@ -7,6 +7,7 @@ const WeatherForm = ({setWeather, setSearching}) => {
 
     const [city, setCity] = useState("");
     const [country, setCountry] = useState("");
+    const [message, setMessage] = useState("");
   
     const handleSubmit = async (e, city, country) => {
   
@@ -17,11 +18,12 @@ const WeatherForm = ({setWeather, setSearching}) => {
       try {
         setSearching(true)
         const response = await axios.get(url);
-        setWeather(response.data)
+        setWeather(response.data);
+        setMessage("");
         
       } catch (error) {
         if (error.response.status === 404) {
-          
+          setMessage("Ciudad no encontrada verifique si está escrita correctamente");
         }
       } finally {
         setSearching(false);
@@ -31,28 +33,30 @@ const WeatherForm = ({setWeather, setSearching}) => {
     }
 
   return (
-    <form className="weather-form" onSubmit={(e) => handleSubmit(e, city, country)}>
+      <>
+          <form className="weather-form" onSubmit={(e) => handleSubmit(e, city, country)}>
 
-        <input className="city-input" required type="text" min="1" placeholder="Ciudad" value={city} onChange={(e) => setCity(e.target.value)}/>
+            <input className="city-input" required type="text" min="1" placeholder="Ciudad" value={city} onChange={(e) => setCity(e.target.value)}/>
 
-        <select className="country-input" required onChange={(e) => setCountry(e.target.value)}>
-        
-            <option value="">Seleccione un país</option>
-            <option value="AR">Argentina</option>
-            <option value="BR">Brasil</option>
-            <option value="UR">Uruguay</option>
-            <option value="PY">Paraguay</option>
-            <option value="CL">Chile</option>
-            <option value="BO">Bolivia</option>
-            <option value="CO">Colombia</option>
-            <option value="MX">México</option>
-            <option value="PE">Perú</option>
-            <option value="ES">España</option>
-        </select>
+            <select className="country-input" required onChange={(e) => setCountry(e.target.value)}>
 
-        <button className="search-button" type="submit">Buscar</button>
+                <option value="">Seleccione un país</option>
+                <option value="AR">Argentina</option>
+                <option value="BR">Brasil</option>
+                <option value="UR">Uruguay</option>
+                <option value="PY">Paraguay</option>
+                <option value="CL">Chile</option>
+                <option value="BO">Bolivia</option>
+                <option value="CO">Colombia</option>
+                <option value="MX">México</option>
+                <option value="PE">Perú</option>
+                <option value="ES">España</option>
+            </select>
 
-    </form>
+            <button className="search-button" type="submit">Buscar</button>
+          </form>
+          {message !== "" ? <h2 className="error-message">{message}</h2> : <></>}
+      </>
   )
 }
 

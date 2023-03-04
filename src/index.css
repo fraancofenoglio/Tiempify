@@ -197,6 +197,14 @@ svg {
   animation: s3 1s infinite linear;
 }
 
+.error-message {
+  background-color: rgb(250, 55, 94);
+  border: 1px solid red;
+  border-radius: 7px;
+  color: #fff;
+  padding: 1%;
+}
+
 @keyframes s3{ 
   100%{transform: rotate(1turn)}
 
