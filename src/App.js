@@ -26,6 +26,10 @@ function App() {
 
       { weather ? <ShowWeather night={night} weather={weather}/> :( searching ? <div className="custom-loader"></div> : <Instructions night={night}/>)}
 
+      <div className="dev">
+        <a href="https://github.com/fraancofenoglio" target="_blank" rel="noreferrer"> Hecho por Franco Fenoglio</a>
+      </div>
+
     </div>
   );
 }

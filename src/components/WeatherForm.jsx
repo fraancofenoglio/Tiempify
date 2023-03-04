@@ -24,7 +24,13 @@ const WeatherForm = ({setWeather, setSearching}) => {
       } catch (error) {
         if (error.response.status === 404) {
           setMessage("Ciudad no encontrada verifique si está escrita correctamente");
+          setWeather("");
         }
+
+        setTimeout(() => {
+          setMessage("");
+        }, 5000);
+        
       } finally {
         setSearching(false);
         setCity("");
@@ -36,7 +42,7 @@ const WeatherForm = ({setWeather, setSearching}) => {
       <>
           <form className="weather-form" onSubmit={(e) => handleSubmit(e, city, country)}>
 
-            <input className="city-input" required type="text" min="1" placeholder="Ciudad" value={city} onChange={(e) => setCity(e.target.value)}/>
+            <input autoFocus className="city-input" required type="text" min="1" placeholder="Ciudad" value={city} onChange={(e) => setCity(e.target.value)}/>
 
             <select className="country-input" required onChange={(e) => setCountry(e.target.value)}>
 

@@ -198,12 +198,30 @@ svg {
 }
 
 .error-message {
+  width: 90%;
   background-color: rgb(250, 55, 94);
   border: 1px solid red;
   border-radius: 7px;
   color: #fff;
-  padding: 1%;
+  padding: 1.1%;
+  text-align: center;
 }
+
+.dev {
+  height: 40px;
+  width: 100vw;
+  background-color: #FA9500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dev a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
 
 @keyframes s3{ 
   100%{transform: rotate(1turn)}
@@ -250,6 +268,9 @@ svg {
   }
   .city-input, .country-input, .search-button {
     width: 30%;
+  }
+  .error-message {
+    width: 50%;
   }
   
 }
