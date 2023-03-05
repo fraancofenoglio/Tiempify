@@ -44,9 +44,9 @@ const WeatherForm = ({setWeather, setSearching}) => {
 
             <input autoFocus className="city-input" required type="text" min="1" placeholder="Ciudad" value={city} onChange={(e) => setCity(e.target.value)}/>
 
-            <select className="country-input" required onChange={(e) => setCountry(e.target.value)}>
+            <select value={country}className="country-input" required onChange={(e) => setCountry(e.target.value)}>
 
-                <option value="">Seleccione un país</option>
+                <option disabled value="">Seleccione un país</option>
                 <option value="AR">Argentina</option>
                 <option value="BR">Brasil</option>
                 <option value="UR">Uruguay</option>
