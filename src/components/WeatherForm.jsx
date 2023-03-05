@@ -26,7 +26,6 @@ const WeatherForm = ({setWeather, setSearching}) => {
           setMessage("Ciudad no encontrada verifique si está escrita correctamente");
           setWeather("");
         }
-
         setTimeout(() => {
           setMessage("");
         }, 5000);
