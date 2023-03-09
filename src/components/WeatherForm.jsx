@@ -11,29 +11,36 @@ const WeatherForm = ({setWeather, setSearching}) => {
   
     const handleSubmit = async (e, city, country) => {
   
-      e.preventDefault()
+      e.preventDefault();
   
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${Key}&lang=es&units=metric`;
+      if (city !== "" && country !== "") {
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${Key}&lang=es&units=metric`;
   
-      try {
-        setSearching(true)
-        const response = await axios.get(url);
-        setWeather(response.data);
-        setMessage("");
-        
-      } catch (error) {
-        if (error.response.status === 404) {
-          setMessage("Ciudad no encontrada verifique si está escrita correctamente");
-          setWeather("");
+        try {
+          setSearching(true);
+          const response = await axios.get(url);
+          setWeather(response.data);
+          setMessage("");
+          
+        } catch (error) {
+          if (error.response.status === 404) {
+            setMessage("Ciudad no encontrada verifique si está escrita correctamente.");
+            setWeather("");
+          }
+          setTimeout(() => {
+            setMessage("");
+          }, 5000);
+          
+        } finally {
+          setSearching(false);
+          setCity("");
+          setCountry("");
         }
+      } else {
+        setMessage("Tenés que ingresar ciudad y país.");
         setTimeout(() => {
           setMessage("");
         }, 5000);
-        
-      } finally {
-        setSearching(false);
-        setCity("");
-        setCountry("");
       }
     }
 
