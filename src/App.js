@@ -20,7 +20,7 @@ function App() {
   
   return (
     <div className="App" style={night ? {backgroundColor: "#1B1B3A"}: {backgroundColor: "#6BBAEC"}}>
-      <h1 onClick={() => window.location.reload()} className="title">Tiempify</h1>
+      <h1 onClick={() => window.location.reload()} className="title">Tempify</h1>
 
       <WeatherForm setSearching={setSearching} setWeather={setWeather} night={night}/>
 
